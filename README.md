@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# My Routing Demo
+
+This project is a demo of advanced routing using [Next.js App Router](https://nextjs.org/docs/app/building-your-application/routing).
+
+## Project Structure
+
+- `app/` — Main application routes (including nested, dynamic, and API routes)
+- `public/` — Static assets
+- `package.json` — Project dependencies and scripts
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Routing Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Static and dynamic routes (e.g., `/blog/[slug]`)
+- Nested routes (e.g., `/about`)
+- API routes (e.g., `/api/hello`)
+
+## Scripts
+
+- `npm run dev` — Start development server
+- `npm run build` — Build for production
+- `npm start` — Start production server
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js Documentation](https://nextjs.org/docs)
+- [App Router Docs](https://nextjs.org/docs/app/building-your-application/routing)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
+# Routing Explained  
+## “In Next.js, your folder structure is your router.”  
+Every folder under app/ becomes a URL segment. Put a page.tsx in a folder to make that segment routable.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Static vs. dynamic segments:  
+A plain folder like about/ gives you /about.
+A bracketed folder like [slug]/ gives you /anything and exposes params.slug.
 
-## Deploy on Vercel
+## Nested layouts:  
+A layout.tsx wraps all the pages beneath it, so shared nav/footers live once and apply everywhere.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## APIs live beside pages: 
+app/api/.../route.ts files create server endpoints like /api/hello.  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If you’re still on the Pages Router, the idea is similar but files live under pages/ (e.g., pages/index.tsx, pages/about.tsx, pages/blog/[slug].tsx) and API routes live under pages/api/*.ts. The App Router just adds layouts, data-fetching conventions, and more powerful routing primitives.
+
+If you want, I can package this into a tiny starter repo or extend it with catch-all routes ([...parts]), route groups ((marketing)), and loading/error states.
