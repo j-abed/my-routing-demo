@@ -1,16 +1,20 @@
-// app/blog/[slug]/page.tsx
-export default function BlogPost({
-  params,
-}: {
-  params: { slug: string };
-}) {
+import { notFound } from "next/navigation";
+import { posts } from "@/lib/data";
+
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  return posts.map(p => ({ slug: p.slug }));
+}
+
+export default function BlogPost({ params }: { params: { slug: string } }) {
+  const post = posts.find(p => p.slug === params.slug);
+  if (!post) return notFound();
   return (
     <>
-      <h1>Post: {params.slug}</h1>
-      <p>
-        This page matches any URL like <code>/blog/anything-here</code> because of the
-        <code> [slug] </code> folder name.
-      </p>
+      <h1>{post.title}</h1>
+      <p><em>Slug:</em> <code>{params.slug}</code></p>
+      <p>{post.body}</p>
     </>
   );
 }

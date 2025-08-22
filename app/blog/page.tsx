@@ -1,10 +1,5 @@
-// app/blog/page.tsx
 import Link from "next/link";
-
-const posts = [
-  { slug: "my-first-post", title: "My First Post" },
-  { slug: "next-routing-101", title: "Next.js Routing 101" },
-];
+import { posts } from "@/lib/data";
 
 export default function BlogIndex() {
   return (
@@ -17,11 +12,7 @@ export default function BlogIndex() {
           </li>
         ))}
       </ul>
-      <p>
-        Each link goes to a <strong>dynamic route</strong> handled by{" "}
-        <code>app/blog/[slug]/page.tsx</code>.
-      </p>
+      <p>Each link routes to <code>app/blog/[slug]/page.tsx</code>.</p>
     </>
   );
 }
-// This page lists blog posts and links to their dynamic routes, which are handled by a separate file for each post.
