@@ -24,11 +24,31 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-## Routing Features
+
+## Routing Features & Playground
 
 - Static and dynamic routes (e.g., `/blog/[slug]`)
 - Nested routes (e.g., `/about`)
 - API routes (e.g., `/api/hello`)
+- Multi-segment dynamic routes (e.g., `/products/[category]/[slug]`)
+- Catch-all routes (e.g., `/docs/[...slug]`)
+- Optional catch-all routes (e.g., `/docs-optional/[[...slug]]`)
+
+### Slug Playground: Try these routes
+
+| Route | Description |
+|-------|-------------|
+| `/blog` | Blog index, links to all posts |
+| `/blog/my-first-post` | Blog post (static param) |
+| `/blog/next-routing-101` | Blog post (static param) |
+| `/products/shoes/nike-pegasus-40` | Product page (nested dynamic) |
+| `/docs/getting-started` | Docs catch-all |
+| `/docs/guides/auth/jwt` | Docs catch-all (multi-segment) |
+| `/docs-optional` | Docs optional catch-all (root) |
+| `/docs-optional/intro/overview` | Docs optional catch-all (deep) |
+| `/blog/unknown-slug` | Should show 404 (static params only) |
+
+See `docs/slug-playground.md` for a quick smoke test reference.
 
 ## Scripts
 
